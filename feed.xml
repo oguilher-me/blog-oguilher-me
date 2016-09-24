@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+
+
+
+<title type="text">oguilher-me</title>
+<generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="http://oguilher.me/blog/feed.xml" />
+<link rel="alternate" type="text/html" href="http://oguilher.me/blog/" />
+<updated>2016-09-24T10:53:25-03:00</updated>
+<id>http://oguilher.me/blog/</id>
+<author>
+  <name>Guilherme Santiago</name>
+  <uri>http://oguilher.me/blog/</uri>
+  <email>falecom@oguilher.me</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Máscaras que se completam com lixo]]></title>
+  <link rel="alternate" type="text/html" href="http://oguilher.me/blog/java/desenvolvimento/mascaras-com-lixo"/>
+  <id>http://oguilher.me/blog/java/desenvolvimento/mascaras-com-lixo</id>
+  <published>2016-09-23T00:00:00-03:00</published>
+  <updated>2016-09-23T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Guilherme Santiago</name>
+    <uri>http://oguilher.me/blog</uri>
+    <email>falecom@oguilher.me</email>
+  </author>
+  <category scheme="http://oguilher.me/blog/tags/#Desenvolvimento" term="Desenvolvimento" /><category scheme="http://oguilher.me/blog/tags/#Java" term="Java" />
+  <content type="html">
+  
+    &lt;p&gt;Bom dia a todos,&lt;/p&gt;
+
+&lt;p&gt;hoje a dica é sobre o componente &lt;strong&gt;JFormattedTextField&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sempre quando colocamos uma máscara nestes campos, por algum motivo, quando apagamos o conteúdo digitado e o componente perde o foco, o conteúdo que estava no campo antes de ser apagado volta a aparecer. Tenho certeza que muita gente já perdeu a paciência com isso.&lt;/p&gt;
+
+&lt;p&gt;Bom, a dica que eu tenho para dar é usar o seguinte método:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;setFocusLostBehavior&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;JFormattedTextField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;COMMIT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Exemplo:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;JFormattedTextField&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maskCPF&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JFormattedTextField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MaskFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;###.###.###-##&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;maskCPF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setFocusLostBehavior&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;JFormattedTextField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;COMMIT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Muita gente usa o NetBeans e não gosta, não consegue ou então não sabe que se pode personalizar o código gerado.&lt;/p&gt;
+
+&lt;p&gt;A ideia é que quando o componente for criado adicionemos esse método a ele.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Para adicionarmos temos que ir nas propriedades do componente  e navegarmos pela aba Code(Código)&lt;/li&gt;
+  &lt;li&gt;Abrimos o Post-Creation Code (Código Pós-criação).&lt;/li&gt;
+  &lt;li&gt;Tomando base que o componente tenha o mesmo nome dado acima adicionamos então:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;maskCPF.setFocusLostBehavior(JFormattedTextField.COMMIT);&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://oguilher.me/blog/images/post_mascara.png&quot; width=&quot;700&quot; title=&quot;Propriedades do JFormattedTextField&quot; alt=&quot;Propriedades do JFormattedTextField&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Feito isso tudo, o problema deste &lt;em&gt;post&lt;/em&gt; já estará resolvido, quando o componente perder o foco o comportamento do componente não será mais o de se auto-preencher com os valores antigos.&lt;/p&gt;
+
+&lt;p&gt;Bom, espero que seja útil a vocês como foi para mim. E lembrando, qualquer dica, sugestão, correção ou dúvida é só entrar em contato.&lt;/p&gt;
+
+&lt;p&gt;Abraço e bom fim de semana a todos..&lt;/p&gt;
+
+&lt;h1 id=&quot;referncias&quot;&gt;Referências&lt;/h1&gt;
+
+&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://docs.oracle.com/javase/7/docs/api/javax/swing/JFormattedTextField.html&quot;&gt; JFormattedTextField &lt;/a&gt;&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://oguilher.me/blog/java/desenvolvimento/mascaras-com-lixo&quot;&gt;Máscaras que se completam com lixo&lt;/a&gt; was originally published by Guilherme Santiago at &lt;a href=&quot;http://oguilher.me/blog&quot;&gt;oguilher-me&lt;/a&gt; on September 23, 2016.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Frames Transparentes em Java]]></title>
+  <link rel="alternate" type="text/html" href="http://oguilher.me/blog/java/desenvolvimento/frame-transparente"/>
+  <id>http://oguilher.me/blog/java/desenvolvimento/frame-transparente</id>
+  <published>2016-09-22T00:00:00-03:00</published>
+  <updated>2016-09-22T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Guilherme Santiago</name>
+    <uri>http://oguilher.me/blog</uri>
+    <email>falecom@oguilher.me</email>
+  </author>
+  <category scheme="http://oguilher.me/blog/tags/#Desenvolvimento" term="Desenvolvimento" /><category scheme="http://oguilher.me/blog/tags/#Java" term="Java" />
+  <content type="html">
+  
+    &lt;p&gt;Não sei se alguem já se deparou com algumas telas com um certo tipo de transparência.  Se já, tenho certeza que, assim como eu, ficou pensando como isso funciona e como fazer isto funcionar em suas aplicações.&lt;/p&gt;
+
+&lt;p&gt;Concordo se alguem dizer que isso é algo que dificilmente você vai usar em uma aplicação profissional, mas no entanto, conhecimento nunca é demais. Como um professor que tenho na universidade costuma a dizer: “O importante é saber fazer, ser algum dia você precisar de algo parecido, então você saberá por onde começar”.&lt;/p&gt;
+
+&lt;p&gt;Então vamos por as Mãos na massa:&lt;/p&gt;
+
+&lt;p&gt;Com o seu editor aberto crie um JFrame. Eu particularmente, para desenvolver  aplicações gráficas, gosto mais do NetBeans.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar o JFrame:&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;http://oguilher.me/blog/images/post_transparencia_3.png&quot; width=&quot;700&quot; title=&quot;JFrame Inicial&quot; alt=&quot;JFrame Inicial&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Faça as alterações que achar necessário, adicione componentes, deixe o JFrame a seu gosto.&lt;/p&gt;
+
+&lt;p&gt;Entre no modo de edição do código fonte e procure o construtor de sua classe.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;http://oguilher.me/blog/images/post_transparencia_2.png&quot; width=&quot;700&quot; title=&quot;Construtor do JFrame&quot; alt=&quot;Construtor do JFrame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora adicione a seguinte linha de código:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;AWTUtilities&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setWindowOpacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.7&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Pra entender o que acontece com essa linha de código, vamos à explicação:&lt;/p&gt;
+
+&lt;p&gt;Primeiramente estamos invocando a classe &lt;strong&gt;AWTUtilities&lt;/strong&gt; (AWT é a biblioteca precursora da SWING), e posteriormente invocando o método &lt;strong&gt;setWindowOpacity(this, 0.7F)&lt;/strong&gt; passando como parâmetro o componente ( refere-se ao &lt;em&gt;this&lt;/em&gt; no exemplo) o qual desejamos mudar a opacidade e a porcentagem da opacidade (0.7f no exemplo), lembrando que os valores devem ser entre 0 e 1.&lt;/p&gt;
+
+&lt;p&gt;Depois disso feito é só executar a aplicação e conferir o resultado.
+&lt;img src=&quot;http://oguilher.me/blog/images/post_transparencia_1.png&quot; width=&quot;700&quot; title=&quot;Tela com o efeito de opacidade&quot; alt=&quot;Tela com o efeito de opacidade&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação&lt;/strong&gt;: Se adicionarmos essa chamada antes de inicializar os componentes do &lt;em&gt;JFrame&lt;/em&gt; causará um erro por que não temos componentes inicializados para adicionar o efeito. Portanto, essa chamada deve ser realizada &lt;strong&gt;EXCLUSIVAMENTE&lt;/strong&gt; após a invocação do &lt;strong&gt;initComponents()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bem, então é isso, espero que gostem da dica e se tiverem outras idéias, dúvidas, sugestões ou correções é só entrar em contato, ou comentar que vou fazer o possível para abordar tais temas.
+Grande abraço a todos e bom fim de semana.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://oguilher.me/blog/java/desenvolvimento/frame-transparente&quot;&gt;Frames Transparentes em Java&lt;/a&gt; was originally published by Guilherme Santiago at &lt;a href=&quot;http://oguilher.me/blog&quot;&gt;oguilher-me&lt;/a&gt; on September 22, 2016.&lt;/p&gt;</content>
+</entry>
+
+</feed>

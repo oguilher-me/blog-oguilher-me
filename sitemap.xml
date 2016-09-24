@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://oguilher.me/blog</loc>
+    </url>
+    
+    
+    <url>
+        <loc>http://oguilher.me/blog/404</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/about/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/categories/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/featured/</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/feed.xml</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/links.jsonp</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/search.json</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/sitemap.xml</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/tags/index.html</loc>
+    </url>
+    
+
+    
+    <url>
+        <loc>http://oguilher.me/blog/java/desenvolvimento/mascaras-com-lixo</loc>
+    </url>
+    
+    <url>
+        <loc>http://oguilher.me/blog/java/desenvolvimento/frame-transparente</loc>
+    </url>
+    
+</urlset>

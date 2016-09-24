@@ -1,0 +1,13 @@
+callback([
+
+  {
+    "text": "Frames Transparentes em Java",
+    "href": "http://oguilher.me/blog/java/desenvolvimento/frame-transparente"
+  } ,
+
+  {
+    "text": "Máscaras que se completam com lixo",
+    "href": "http://oguilher.me/blog/java/desenvolvimento/mascaras-com-lixo"
+  } 
+
+])
