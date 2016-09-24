@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Frames Transparentes em Java &vert; oguilher-me</title>
+<meta name="description" content="Se você já se deparou com algumas telas com um certo tipo de transparência, tenho certeza que assim como eu, ficou pensando como isso funciona e como fazer isto funcionar em suas aplicações.">
+<meta name="keywords" content="Desenvolvimento, Java">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://oguilher.me/blog/images/office-1575261_1920.jpg">
+
+<meta name="twitter:title" content="Frames Transparentes em Java">
+<meta name="twitter:description" content="Se você já se deparou com algumas telas com um certo tipo de transparência, tenho certeza que assim como eu, ficou pensando como isso funciona e como fazer isto funcionar em suas aplicações.">
+<meta name="twitter:creator" content="@Guil_Santiago">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frames Transparentes em Java">
+<meta property="og:description" content="Se você já se deparou com algumas telas com um certo tipo de transparência, tenho certeza que assim como eu, ficou pensando como isso funciona e como fazer isto funcionar em suas aplicações.">
+<meta property="og:url" content="http://oguilher.me/blog/java/desenvolvimento/frame-transparente">
+<meta property="og:site_name" content="oguilher-me">
+<meta property="og:image" content="http://oguilher.me/blog/images/office-1575261_1920.jpg">
+
+
+
+
+
+<link rel="canonical" href="http://oguilher.me/blog/java/desenvolvimento/frame-transparente">
+<link href="http://oguilher.me/blog/feed.xml" type="application/atom+xml" rel="alternate" title="oguilher-me Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://oguilher.me/blog/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="http://oguilher.me/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="http://oguilher.me/blog/assets/css/vendor/nprogress.css">
+    <link rel="stylesheet" href="http://oguilher.me/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="http://oguilher.me/blog/assets/css/style.css">
+    <link rel="stylesheet" href="http://oguilher.me/blog/assets/css/post.css">
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://oguilher.me/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://oguilher.me/blog/images/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://oguilher.me/blog/images/favicon.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://oguilher.me/blog/images/favicon.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://oguilher.me/blog/images/favicon.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://oguilher.me/blog/images/favicon.png">
+
+<style type="text/css">@media only screen and (min-width:43.75em){.notepad-post-content div>p:first-child:first-letter{float:left;font-size:4.688rem;line-height:4.375rem;padding-top:.25rem;padding-right:.5rem;padding-left:.188rem;font-family:serif}}</style>
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="notepad-post-container" class="notepad-post-container intro-effect-sliced" role="main">
+            <header class="notepad-post-header">
+                <div class="bg-img"></div>
+                
+                <div class="notepad-post-menu-header">
+
+                    <a class="notepad-blog-logo" href="http://oguilher.me/blog">
+                        <img src="http://oguilher.me/blog/images/logo_blog.png" alt="Blog Logo" />
+                    </a><a class="notepad-blog-logo" href="http://oguilher.me/blog"><span class="tipografy">oguilher.me</span></a>
+
+                <div class="notepad-blog-menu">      
+    <div class="notepad-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="notepad-menu">
+        <li class="notepad-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="http://oguilher.me/blog/blog">HOME</a>
+                 </li>
+   
+            <li><a target="_blank" href="http://www.oguilher.me" title="Site Pessoal"><i class="icon-rss"></i>OGUILHER.ME</a></li>         
+           <!-- <li><a href="http://oguilher.me/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li> -->
+    </ul>
+
+</div>
+            </div>
+
+            <div class="notepad-post-title bg-check">
+                <h1>Frames Transparentes em Java</h1>
+                <p>por <strong>Guilherme Santiago</strong> &#8212; em <a href="http://oguilher.me/blog/tags/index.html#Desenvolvimento" data-toggle="tooltip" title="Postagem marcada com Desenvolvimento" rel="tag">Desenvolvimento</a>&nbsp;&comma;&nbsp;<a href="http://oguilher.me/blog/tags/index.html#Java" data-toggle="tooltip" title="Postagem marcada com Java" rel="tag">Java</a> <strong><time datetime="2016-09-22T00:00:00-03:00">22 Sep 2016</time></strong></p>
+            </div>
+            <div class="bg-img"></div>
+        </header>
+        <button class="trigger bg-check" data-info="Leia Mais"><span>Trigger</span></button>
+        <img src="http://oguilher.me/blog/images/office-1575261_1920.jpg" alt="cover-image" />
+
+        <article class="notepad-post-content post">
+            <div><p>Não sei se alguem já se deparou com algumas telas com um certo tipo de transparência.  Se já, tenho certeza que, assim como eu, ficou pensando como isso funciona e como fazer isto funcionar em suas aplicações.</p>
+
+<p>Concordo se alguem dizer que isso é algo que dificilmente você vai usar em uma aplicação profissional, mas no entanto, conhecimento nunca é demais. Como um professor que tenho na universidade costuma a dizer: “O importante é saber fazer, ser algum dia você precisar de algo parecido, então você saberá por onde começar”.</p>
+
+<p>Então vamos por as Mãos na massa:</p>
+
+<p>Com o seu editor aberto crie um JFrame. Eu particularmente, para desenvolver  aplicações gráficas, gosto mais do NetBeans.</p>
+
+<p>Vamos criar o JFrame:</p>
+
+<p><br />
+<img src="http://oguilher.me/blog/images/post_transparencia_3.png" width="700" title="JFrame Inicial" alt="JFrame Inicial" /></p>
+
+<p>Faça as alterações que achar necessário, adicione componentes, deixe o JFrame a seu gosto.</p>
+
+<p>Entre no modo de edição do código fonte e procure o construtor de sua classe.</p>
+
+<p><br />
+<img src="http://oguilher.me/blog/images/post_transparencia_2.png" width="700" title="Construtor do JFrame" alt="Construtor do JFrame" /></p>
+
+<p>Agora adicione a seguinte linha de código:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">AWTUtilities</span><span class="o">.</span><span class="na">setWindowOpacity</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="mf">0.7</span><span class="n">F</span><span class="o">);</span></code></pre></figure>
+
+<p>Pra entender o que acontece com essa linha de código, vamos à explicação:</p>
+
+<p>Primeiramente estamos invocando a classe <strong>AWTUtilities</strong> (AWT é a biblioteca precursora da SWING), e posteriormente invocando o método <strong>setWindowOpacity(this, 0.7F)</strong> passando como parâmetro o componente ( refere-se ao <em>this</em> no exemplo) o qual desejamos mudar a opacidade e a porcentagem da opacidade (0.7f no exemplo), lembrando que os valores devem ser entre 0 e 1.</p>
+
+<p>Depois disso feito é só executar a aplicação e conferir o resultado.
+<img src="http://oguilher.me/blog/images/post_transparencia_1.png" width="700" title="Tela com o efeito de opacidade" alt="Tela com o efeito de opacidade" /></p>
+
+<p><strong>Observação</strong>: Se adicionarmos essa chamada antes de inicializar os componentes do <em>JFrame</em> causará um erro por que não temos componentes inicializados para adicionar o efeito. Portanto, essa chamada deve ser realizada <strong>EXCLUSIVAMENTE</strong> após a invocação do <strong>initComponents()</strong></p>
+
+<p>Bem, então é isso, espero que gostem da dica e se tiverem outras idéias, dúvidas, sugestões ou correções é só entrar em contato, ou comentar que vou fazer o possível para abordar tais temas.
+Grande abraço a todos e bom fim de semana.</p>
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="notepad-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Frames Transparentes em Java&quot;%20http://oguilher.me/blog/java/desenvolvimento/frame-transparente%20via%20&#64;Guil_Santiago"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=http://oguilher.me/blog/java/desenvolvimento/frame-transparente"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=http://oguilher.me/blog/java/desenvolvimento/frame-transparente"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="notepad-author-info">
+                <div class="row">
+                    <section class="notepad-post-author small-12 columns">
+                        
+                            <img src="http://oguilher.me/blog/images/gui.JPG" class="notepad-post-author-avatar" alt="Guilherme Santiago's photo">
+                        
+                        
+                            <span class="author-label">Autor</span>
+                            <h1>Guilherme Santiago</h1>
+                        
+                        
+                            <!-- <p><a href="mailto:falecom@oguilher.me" class="author-website">falecom@oguilher.me</a></p> -->
+                        
+                        
+                            <p>Mineiro erradicado em PG, ama cervejas e vinhos, desenvolvedor, Yoshi > Luigi > Mario. Toca algumas coisinhas, gosta de compor e arte de várias formas.</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="notepad-disqus row">
+    <div class="small-12 columns">
+        <h1 class="notepad-comments-header">Comentários</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'oguilher-me'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="notepad-site-footer">
+    <div class="copyright">
+         <section><a href="http://oguilher.me/blog/about">Guilherme Santiago</a> &copy; 2016 &bull; All rights reserved.</section>
+         <section>Made with <a class="icon-ghost" href="https://jekyllrb.com/">Jekyll</a> and <span class="love">❤</span></section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/Guil_Santiago">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        
+        <a href="http://instagram.com/guilhermesantiago">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-instagram fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/oguilher-me">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/GuiSantiagoRibeiro">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer> 
+</main>    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="http://oguilher.me/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="http://oguilher.me/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="http://oguilher.me/blog/assets/js/foundation.min.js"></script>
+    <script src="http://oguilher.me/blog/assets/js/vendor/background-check.js"></script>
+    <script src="http://oguilher.me/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="http://oguilher.me/blog/assets/js/notepad.js"></script>
+    <script src="http://oguilher.me/blog/assets/js/scripts.min.js"></script>
+    <script src="http://oguilher.me/blog/assets/js/vendor/nprogress.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+    <script type='text/javascript'>console.log("HMFaysal Notepad Theme Version 2.0");</script>
+    <script type='text/javascript'>console.log("https://alum.mit.edu/www/hmfaysal");</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39365944-7', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+<script>NProgress.start();var interval=setInterval(function(){NProgress.inc()},1000);jQuery(window).load(function(){clearInterval(interval);NProgress.done()});jQuery(window).unload(function(){NProgress.start()});</script> 
+</body>
+</html>
